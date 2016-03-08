@@ -10,7 +10,7 @@
  * 
  * Licensed under MIT
  * 
- * Released on: January 17, 2016
+ * Released on: March 8, 2016
  */
         (function (root, factory) {
         	'use strict';
@@ -1009,6 +1009,15 @@
                     var groupSlides = s.params.slidesPerGroup * s.params.slidesPerColumn;
                     var viewSlides = s.params.slidesPerView * s.params.slidesPerColumn;
                     var numberOfBullets = parseInt(s.slides.length / groupSlides);
+        
+                    if(s.slides.length % groupSlides >=2){
+                        numberOfBullets++;
+                    }
+        
+                    if(groupSlides / s.params.slidesPerColumn === 1){
+                        numberOfBullets--;
+                    }
+        
                     for (var i = 0; i < numberOfBullets; i++) {
                         if (s.params.paginationBulletRender) {
                             paginationHTML += s.params.paginationBulletRender(i, s.params.bulletClass);
